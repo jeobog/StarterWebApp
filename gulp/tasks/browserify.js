@@ -7,6 +7,7 @@
 */
 
 var browserify   = require('browserify');
+var babelify = require("babelify");
 var watchify     = require('watchify');
 var bundleLogger = require('../util/bundleLogger');
 var gulp         = require('gulp');
@@ -28,7 +29,9 @@ gulp.task('browserify', function(callback) {
       // Add file extentions to make optional in your requires
       extensions: config.extensions,
       // Enable source maps!
-      debug: config.debug
+      debug: config.debug,
+      // Tranform with babelify
+      transform: babelify.configure({presets: ["es2015", "react", "stage-0"]})
     });
 
     var bundle = function() {

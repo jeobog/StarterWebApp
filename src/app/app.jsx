@@ -1,19 +1,24 @@
-(function () {
-    var React = require('react'),
-        ReactDOM = require('react-dom')
-        injectTapEventPlugin = require("react-tap-event-plugin"),
-        Main = require('./components/main.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, Link, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
+import Main from './components/main.jsx';
 
-    //Needed for React Developer Tools
-    window.React = React;
+let reactRoot = document.getElementsByTagName('reactroot')[0];
+if (!reactRoot) {
+    reactRoot = document.createElement('reactroot');
+    document.body.appendChild(reactRoot);
+}
 
-    //Needed for onTouchTap
-    //Can go away when react 1.0 release
-    //Check this repo:
-    //https://github.com/zilverline/react-tap-event-plugin
-    injectTapEventPlugin();
+const  appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 
-    // Render the main app react component into the document body.https://facebook.github.io/react/blog/2015/10/01/react-render-and-top-level-api.html
-    ReactDOM.render(<Main />, document.body);
+const appRoute = {
+    path: '/',
+    component: Main,
+    indexRoute: { component: Main },
+    childRoutes: [
 
-})();
+    ]
+}
+
+ReactDOM.render(<Router history={ appHistory } routes={ appRoute } />, reactRoot);
