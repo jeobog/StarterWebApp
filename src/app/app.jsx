@@ -10,7 +10,7 @@ if (!reactRoot) {
     document.body.appendChild(reactRoot);
 }
 
-const  appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
+const  appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 
 const appRoute = {
     path: '/',

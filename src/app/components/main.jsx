@@ -6,7 +6,6 @@ class Main extends React.Component
     {
         super(props);
     }
-
     render()
     {
         return (
