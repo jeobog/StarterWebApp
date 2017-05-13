@@ -1,29 +1,24 @@
-var React = require('react');
-var Bootstrap = require('react-bootstrap');
+import React from 'react';
 
-var Navigation = require('./navigation.jsx');
+class Main extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+    }
 
-var Main = React.createClass({
-
-    render: function () {
+    render()
+    {
         return (
             <div>
-
-                <Navigation projectName="react-bootstrap-starter" />
-
                 <div className="container">
                     <div className="starter-template">
-                        <h1>Bootstrap starter template</h1>
-                        <p className="lead">Use this document as a way to quickly start any new project.
-                            <br />
-                        All you get is this text and a mostly bare-bones HTML document.</p>
-                        <>
+                        <h1>Awesome! Let's start building some react components...</h1>
                     </div>
                 </div>
             </div>
         );
     }
+}
 
-});
-
-module.exports = Main;
+export default Main;
